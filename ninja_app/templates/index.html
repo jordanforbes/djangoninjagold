@@ -56,11 +56,17 @@
             </div>
         </div>
         <br>
-        <br>
-        <div class="row log jumbotron">
-            {{ request.session.activity_log }}
+        <div class='jumbotron'>
+            {% for activity in request.session.activity_log %}
+                
+            {% if 'lost' in activity %}
+                <p style="color:red;">{{ activity }}</p>
+            {% else %}
+                <p style="color:green;">{{ activity }}</p>
+            {% endif %}
+        
+        {% endfor %}
         </div>
     </div>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>

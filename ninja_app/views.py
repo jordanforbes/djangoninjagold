@@ -18,6 +18,7 @@ def process(request):
         'house': random.randint(2,5),
         'casino': random.randint(-50,50)
     }
+    
     pay = jobs[request.POST['work']]
     print(jobs[request.POST['work']])
     print(request.POST)
@@ -29,6 +30,7 @@ def process(request):
         absPay = pay * -1
         activity =f'You have lost ${absPay} at the {request.POST["work"]}'
         request.session['activity_log'].append(activity)
-    
+        
+    print(request.session['activity_log'])
     request.session['gold']+=pay
     return redirect('/')
